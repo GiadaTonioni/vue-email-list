@@ -3,6 +3,7 @@ const {createApp} = Vue;
 createApp({
 	data(){
 		return{
+            email: '',
             emailList: 
             [
                 'uno@gmail.com', 
@@ -18,9 +19,14 @@ createApp({
             ]
 		}
 	},
-	mounted(){
-		axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((result) => {
-			this.randomNumber = result.data.response
-		}
-    )}
-}).mount('#app')
+	
+    methods:{
+        callEmail(){
+                axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((result) => {
+                    this.emailList = result.data.response
+                })
+                
+            }
+        }
+    }).mount('#app')
+            
